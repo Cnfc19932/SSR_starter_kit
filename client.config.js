@@ -2,10 +2,10 @@ const path = require('path');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
-	entry: path.resolve(__dirname, 'src/sever.js'),
+	entry: path.resolve(__dirname, 'src/client.tsx'),
 	output: {
-		path: path.resolve(__dirname, 'build'),
-		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'public'),
+		filename: 'client.bundle.js',
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
