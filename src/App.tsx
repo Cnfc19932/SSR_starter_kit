@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react";
+import NavigationsMenu from "./components/modules/NavigationMenu/NavigationsMenu";
 
-class Test extends React.Component {
+class App extends React.Component {
     render() {
-        return <div>OriginalString</div>;
+        return (
+            <>
+                <NavigationsMenu />
+            </>
+        );
     }
 }
 
-export default Test;
+export default App;

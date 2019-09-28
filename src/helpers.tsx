@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import App from './App';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import App from "./App";
 
 export default () => {
     const content = ReactDOMServer.renderToString(<App />);
@@ -14,4 +14,4 @@ export default () => {
             </body>
         </html>
     `;
-}
+};
