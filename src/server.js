@@ -9,7 +9,9 @@ app.use(express.static("public"));
 app.use(express.static("static"));
 
 app.get("*", (req, res) => {
-    const content = renderer();
+    const { path } = req;
+
+    const content = renderer(path);
 
     res.send(content);
 });

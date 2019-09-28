@@ -2,7 +2,7 @@ const path = require('path');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
-	entry: path.resolve(__dirname, 'src/sever.js'),
+	entry: path.resolve(__dirname, 'src/server.js'),
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'bundle.js',
