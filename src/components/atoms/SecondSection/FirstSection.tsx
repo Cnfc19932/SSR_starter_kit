@@ -1,10 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from "react";
 
 class SecondSection extends PureComponent {
     render() {
-        return (
-            <div>SecondSection</div>
-        );
+        return <div>SecondSection</div>;
     }
 }
 
