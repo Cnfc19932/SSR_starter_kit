@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import { Route, Link } from "react-router-dom";
 import RoutingMap from "./RouteMap";
+import PageWrapper from "../../core/PageWrapper";
+import isServer from "../../utils/isServer";
 
 class Routing extends PureComponent {
     render() {
@@ -11,11 +13,19 @@ class Routing extends PureComponent {
                     <Link to="/2">2</Link>
                 </header>
                 <section>
-                    {RoutingMap.map(({ path, component: Component, exact }) => (
+                    {RoutingMap.map(({ path, component: Component, exact, actions }) => (
                         <Route
                             exact={exact}
                             path={path}
-                            component={Component}
+                            component={() => {
+                                console.log('isServer', isServer());
+
+                                return (
+                                    <PageWrapper>
+                                        <Component/>
+                                    </PageWrapper>
+                                )
+                            }}
                         />
                     ))}
                 </section>
