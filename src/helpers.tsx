@@ -2,18 +2,21 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import App from "./App";
 import { StaticRouter } from "react-router-dom";
-import createStore from './store/createStore';
+import { Provider } from 'react-redux'
 
-export default path => {
+export default (path, store) => {
     const content = ReactDOMServer.renderToString(
-        <StaticRouter location={path}>
-            <App />
-        </StaticRouter>
+        <Provider store={store}>
+            <StaticRouter location={path}>
+                <App />
+            </StaticRouter>
+        </Provider>
     );
 
-    const store = createStore();
 
     const { title, description } = store.getState().application.meta;
+
+    const preloadedState = store.getState();
 
     return `
         <!DOCTYPE html>
@@ -24,6 +27,14 @@ export default path => {
             </head>
             <body>
                 <div id="root">${content}</div>
+                 <script>
+                      // WARNING: See the following for security issues around embedding JSON in HTML:
+                      // http://redux.js.org/recipes/ServerRendering.html#security-considerations
+                      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
+                    /</g,
+                    '\\u003c'
+                )}
+                    </script>
                 <script src="/client.bundle.js"></script>
             </body>
         </html>

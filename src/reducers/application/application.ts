@@ -5,6 +5,12 @@ export default (state = {
     }
 }, action) => {
   switch (action.type) {
+      case 'CHANGE':
+          const { meta } = action.payload;
+
+          return {
+              meta
+          };
       default:
           return state;
   }
