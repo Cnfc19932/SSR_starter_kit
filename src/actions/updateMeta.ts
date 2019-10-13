@@ -17,21 +17,21 @@ export interface PageMeta {
 }
 
 const updateMeta = (meta: PageMeta) => {
-    const head = document.querySelector('head');
+    const head = document.querySelector("head");
 
     Object.entries(meta).map(([key, value]) => {
-       switch (key) {
-           case 'title':
-               const title = document.querySelector('title');
+        switch (key) {
+            case "title":
+                const title = document.querySelector("title");
 
-               if (title) {
-                   title.remove();
-               }
+                if (title) {
+                    title.remove();
+                }
 
-               const newTitle = document.createElement('title');
-               newTitle.innerText = value;
+                const newTitle = document.createElement("title");
+                newTitle.innerText = value;
 
-               head.append(newTitle);
-       }
+                head.append(newTitle);
+        }
     });
 };

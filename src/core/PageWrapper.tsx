@@ -1,8 +1,14 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
-class PageWrapper extends PureComponent {
+interface Props {
+    actions: any[];
+}
+
+class PageWrapper extends PureComponent<Props> {
     componentDidMount() {
+        const { actions } = this.props;
 
+        console.log("actions", actions);
     }
 
     render() {

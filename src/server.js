@@ -1,5 +1,7 @@
 import express from "express";
 import renderer from "./helpers";
+import matchRoutes from "./utils/matchPath";
+import RouteMap from "./components/Routing/RouteMap";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,9 +13,15 @@ app.use(express.static("static"));
 app.get("*", (req, res) => {
     const { path } = req;
 
-    const content = renderer(path);
+    const route = matchRoutes(RouteMap, path);
 
-    res.send(content);
+    const { actions = [] } = route[0] || {};
+
+    Promise.all(actions).then(() => {
+        const content = renderer(path);
+
+        res.send(content);
+    });
 });
 
 app.listen(port, () => {

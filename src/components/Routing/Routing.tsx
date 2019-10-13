@@ -13,7 +13,7 @@ class Routing extends PureComponent {
                     <Link to="/2">2</Link>
                 </header>
                 <section>
-                    {RoutingMap.map(({ path, component: Component, exact, actions }) => (
+                    {RoutingMap.map(({ path, component: Component, exact, actions = [] }) => (
                         <Route
                             exact={exact}
                             path={path}
@@ -21,7 +21,9 @@ class Routing extends PureComponent {
                                 console.log('isServer', isServer());
 
                                 return (
-                                    <PageWrapper>
+                                    <PageWrapper
+                                        actions={actions}
+                                    >
                                         <Component/>
                                     </PageWrapper>
                                 )
