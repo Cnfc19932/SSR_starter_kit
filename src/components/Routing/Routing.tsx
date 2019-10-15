@@ -11,6 +11,7 @@ class Routing extends PureComponent {
                 <header>
                     <Link to="/1">1</Link>
                     <Link to="/2">2</Link>
+                    <Link to="/2">3</Link>
                 </header>
                 <section>
                     {RoutingMap.map(({ path, component: Component, exact, actions = [] }) => (

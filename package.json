@@ -7,7 +7,9 @@
     "build": "rm -rf build && rm -rf public && npm run build:server && npm run build:client",
     "build:server": "webpack --config server.config.js --progress --colors",
     "build:client": "webpack --config client.config.js --progress --colors",
-    "format": "prettier ./src/**/*.tsx ./src/**/*.ts ./src/**/*.js ./src/**/*.jsx  --write --tab-width 4"
+    "format": "prettier ./src/**/*.tsx ./src/**/*.ts ./src/**/*.js ./src/**/*.jsx  --write --tab-width 4",
+    "start:client": "webpack --config client.config.js --progress --colors --watch",
+    "start:server": "webpack --config server.config.js --progress --colors --watch"
   },
   "author": "S. Gorovoy <cnfc19932@gmail.com>",
   "license": "ISC",
