@@ -6,11 +6,11 @@ import { Provider } from 'react-redux'
 
 export default (path, store) => {
     const content = ReactDOMServer.renderToString(
-        <Provider store={store}>
-            <StaticRouter location={path}>
-                <App />
-            </StaticRouter>
-        </Provider>
+            <Provider store={store}>
+                <StaticRouter location={path}>
+                        <App />
+                </StaticRouter>
+            </Provider>
     );
 
 

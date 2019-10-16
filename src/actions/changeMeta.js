@@ -1,1 +1,2 @@
-export default dispatch => dispatch({ type: "CHANGE", payload: { meta: { title: "Hi" } } });
+export default dispatch =>
+    dispatch({ type: "CHANGE", payload: { meta: { title: "Hi" } } });

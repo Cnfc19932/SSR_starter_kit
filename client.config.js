@@ -8,7 +8,7 @@ module.exports = {
 		filename: 'client.bundle.js',
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.ts', '.tsx'],
+		extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
 	},
 	target: 'node',
 	node: {
@@ -17,6 +17,19 @@ module.exports = {
 	mode: 'production',
 	module: {
 		rules: [
+			{
+				test: /\.css$/i,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							modules: true,
+						},
+					}
+				],
+			},
 			// ts-loader: конвертируем ts (es6) в js (es6)
 			// babel-loader: конвертируем js (es6) в js (es5)
 			{

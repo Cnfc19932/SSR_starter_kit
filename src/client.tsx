@@ -15,10 +15,10 @@ const store = createStore(preloadedState);
 window.store = store;
 
 ReactDOM.hydrate(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>,
     document.querySelector("#root")
 );
