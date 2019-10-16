@@ -16,11 +16,12 @@ module.exports = [
         node: {
             fs: 'empty',
         },
-        mode: 'production',
+        mode: 'development',
         module: {
             rules: [
                 {
                     test: /\.css$/i,
+                    exclude: [/node_modules/, nodeModulesPath],
                     use: [
                         'style-loader',
                         {
@@ -64,11 +65,12 @@ module.exports = [
         node: {
             fs: 'empty',
         },
-        mode: 'production',
+        mode: 'development',
         module: {
             rules: [
                 {
                     test: /\.css$/i,
+                    exclude: [/node_modules/, nodeModulesPath],
                     use: [
                         {
                             loader: 'isomorphic-style-loader',
