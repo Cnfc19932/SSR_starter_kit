@@ -23,7 +23,7 @@ module.exports = [
                     test: /\.css$/i,
                     exclude: [/node_modules/, nodeModulesPath],
                     use: [
-                        'style-loader',
+                        'isomorphic-style-loader',
                         {
                             loader: 'css-loader',
                             options: {

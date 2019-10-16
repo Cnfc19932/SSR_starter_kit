@@ -3,14 +3,20 @@ import ReactDOMServer from "react-dom/server";
 import App from "./App";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from 'react-redux'
+import StyleContext from 'isomorphic-style-loader/StyleContext'
 
 export default (path, store) => {
+    const css = new Set()
+    const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()))
+
     const content = ReactDOMServer.renderToString(
+        <StyleContext.Provider value={{ insertCss }}>
             <Provider store={store}>
                 <StaticRouter location={path}>
                         <App />
                 </StaticRouter>
             </Provider>
+        </StyleContext.Provider>
     );
 
 
@@ -22,6 +28,7 @@ export default (path, store) => {
         <!DOCTYPE html>
             <head>
                 <title>${title}</title>
+                <style>${[...css].join('')}</style>
                 <meta name="description" content="${description}">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </head>
