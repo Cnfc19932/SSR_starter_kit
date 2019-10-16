@@ -20,15 +20,19 @@ module.exports = {
 			{
 				test: /\.css$/i,
 				use: [
-					'style-loader',
+					{
+						loader: 'isomorphic-style-loader',
+					},
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: true,
-							modules: true,
-							onlyLocals: true,
-						},
-					}
+							modules: {
+								localIdentName: '[name]__[local]___[hash:base64:5]',
+							},
+							importLoaders: 1,
+							sourceMap: true
+						}
+					},
 				],
 			},
 			// ts-loader: конвертируем ts (es6) в js (es6)
