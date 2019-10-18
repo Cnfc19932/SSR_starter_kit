@@ -21,7 +21,7 @@ app.get("*", (req, res) => {
     const { actions = [] } = route[0] || {};
     console.log(actions);
 
-    const a = actions.map((x) => x(store.dispatch));
+    const a = actions.map(x => x(store.dispatch));
     console.log(a);
 
     Promise.all(a).then(() => {

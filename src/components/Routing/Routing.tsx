@@ -11,25 +11,31 @@ class Routing extends PureComponent {
     render() {
         return (
             <>
-                {RoutingMap.map(({ path, component: PageComponent, exact, actions = [], layout: Layout = defaultLayout }) => (
-                    <Route
-                        exact={exact}
-                        path={path}
-                        component={() => {
-                            console.log('isServer', isServer());
+                {RoutingMap.map(
+                    ({
+                        path,
+                        component: PageComponent,
+                        exact,
+                        actions = [],
+                        layout: Layout = defaultLayout
+                    }) => (
+                        <Route
+                            exact={exact}
+                            path={path}
+                            component={() => {
+                                console.log("isServer", isServer());
 
-                            return (
-                                <PageWrapper
-                                    actions={actions}
-                                >
-                                    <Layout>
-                                        <PageComponent/>
-                                    </Layout>
-                                </PageWrapper>
-                            )
-                        }}
-                    />
-                ))}
+                                return (
+                                    <PageWrapper actions={actions}>
+                                        <Layout>
+                                            <PageComponent />
+                                        </Layout>
+                                    </PageWrapper>
+                                );
+                            }}
+                        />
+                    )
+                )}
             </>
         );
     }

@@ -4,21 +4,27 @@ import { ComponentClass } from "react";
 import changeMeta from "../../actions/changeMeta";
 import MainLayout from "../layouts/Main";
 
-const RouteMap: {path: string; component: ComponentClass; exact?: boolean; layout?: ComponentClass; actions?: any[]}[] = [
+const RouteMap: {
+    path: string;
+    component: ComponentClass;
+    exact?: boolean;
+    layout?: ComponentClass;
+    actions?: any[];
+}[] = [
     {
-        path: '/1',
+        path: "/1",
         component: FirstSection,
         actions: [changeMeta],
-        layout: MainLayout,
+        layout: MainLayout
     },
     {
-        path: '/2',
-        component: SecondSection,
+        path: "/2",
+        component: SecondSection
     },
     {
-        path: '/',
+        path: "/",
         component: SecondSection,
-        exact: true,
+        exact: true
     }
 ];
 
