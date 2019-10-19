@@ -1,16 +1,10 @@
-import FirstSection from "../atoms/FirstSection/FirstSection";
-import SecondSection from "../atoms/SecondSection/FirstSection";
-import { ComponentClass } from "react";
+import FirstSection from "./components/atoms/FirstSection/FirstSection";
+import SecondSection from "./components/atoms/SecondSection/SecondSection";
 import changeMeta from "../../actions/changeMeta";
-import MainLayout from "../layouts/Main";
+import MainLayout from "./layouts/Main";
+import { Routes } from "../../types/route";
 
-const RouteMap: {
-    path: string;
-    component: ComponentClass;
-    exact?: boolean;
-    layout?: ComponentClass;
-    actions?: any[];
-}[] = [
+const RouteMap: Routes = [
     {
         path: "/1",
         component: FirstSection,

@@ -1,8 +1,11 @@
 import express from "express";
-import renderer from "./helpers";
+import renderer from "./serverRender";
 import matchRoutes from "./utils/matchPath";
-import RouteMap from "./components/Routing/RouteMap";
 import createStore from "./store/createStore";
+import projectsMap from "./projectsMap";
+
+// Подменяется webpack
+const { App, reducers, routeMap } = projectsMap[process.env.APP_ID];
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,18 +17,16 @@ app.use(express.static("static"));
 app.get("*", (req, res) => {
     const { path } = req;
 
-    const store = createStore();
+    const store = createStore(reducers);
 
-    const route = matchRoutes(RouteMap, path);
+    const route = matchRoutes(routeMap, path);
 
     const { actions = [] } = route[0] || {};
-    console.log(actions);
 
-    const a = actions.map(x => x(store.dispatch));
-    console.log(a);
+    const promises = actions.map(x => x(store.dispatch));
 
-    Promise.all(a).then(() => {
-        const content = renderer(path, store);
+    Promise.all(promises).then(() => {
+        const content = renderer(path, store, App);
 
         res.send(content);
     });

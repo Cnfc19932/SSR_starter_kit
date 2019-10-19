@@ -1,0 +1,1 @@
+export const FIRE_PROJECT = "FIRE_PROJECT_ID";

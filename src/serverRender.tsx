@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import App from "./App";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import StyleContext from "isomorphic-style-loader/StyleContext";
 
-export default (path, store) => {
+export default (path, store, App) => {
     const css = new Set();
     const insertCss = (...styles) =>
         styles.forEach(style => css.add(style._getCss()));

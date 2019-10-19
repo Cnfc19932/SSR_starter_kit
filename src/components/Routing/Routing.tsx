@@ -1,17 +1,23 @@
 import React, { PureComponent } from "react";
-import { Route, Link } from "react-router-dom";
-import RoutingMap from "./RouteMap";
+import { Route } from "react-router-dom";
 import PageWrapper from "../../core/PageWrapper";
 import isServer from "../../utils/isServer";
 import MainLayout from "../layouts/Main";
+import { Routes } from "../../types/route";
 
 const defaultLayout = MainLayout;
 
-class Routing extends PureComponent {
+type Props = {
+    routingMap: Routes;
+};
+
+class Routing extends PureComponent<Props> {
     render() {
+        const { routingMap } = this.props;
+
         return (
             <>
-                {RoutingMap.map(
+                {routingMap.map(
                     ({
                         path,
                         component: PageComponent,
